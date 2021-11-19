@@ -27,6 +27,9 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :picture2,
+               resource: PictureResource
+
   many_to_many :picture
 
 end
