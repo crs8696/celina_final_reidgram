@@ -9,6 +9,9 @@ class PictureResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :likes,
+             foreign_key: :photo_id
+
   belongs_to :photo_uploader,
              resource: UserResource,
              foreign_key: :photo_owner
