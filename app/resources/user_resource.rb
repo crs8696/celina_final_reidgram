@@ -8,6 +8,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :pictures,
+             foreign_key: :photo_owner
+
   has_many   :follow_requests,
              resource: FollowerResource,
              foreign_key: :receiver_id

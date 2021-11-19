@@ -9,6 +9,10 @@ class PictureResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :photo_uploader,
+             resource: UserResource,
+             foreign_key: :photo_owner
+
   # Indirect associations
 
 end
