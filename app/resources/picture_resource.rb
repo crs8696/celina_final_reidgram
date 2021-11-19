@@ -24,4 +24,7 @@ class PictureResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :comment_givers,
+               resource: UserResource
+
 end
