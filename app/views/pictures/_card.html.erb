@@ -19,7 +19,11 @@
 
       <dt>Photo owner</dt>
       <!-- Display photo_owner start -->
-      <dd><%= picture.photo_owner %></dd>
+      <dd>
+        <% if @picture.photo_uploader.present? %>
+          <%= link_to picture.photo_uploader, picture.photo_uploader %>
+        <% end %>
+      </dd>
       <!-- Display photo_owner end -->
 
       <dt>Place</dt>

@@ -12,12 +12,20 @@
 
       <dt>Commenter</dt>
       <!-- Display commenter start -->
-      <dd><%= comment.commenter %></dd>
+      <dd>
+        <% if @comment.comment_giver.present? %>
+          <%= link_to comment.comment_giver, comment.comment_giver %>
+        <% end %>
+      </dd>
       <!-- Display commenter end -->
 
       <dt>Photo</dt>
       <!-- Display photo_id start -->
-      <dd><%= comment.photo_id %></dd>
+      <dd>
+        <% if @comment.photo.present? %>
+          <%= link_to comment.photo, comment.photo %>
+        <% end %>
+      </dd>
       <!-- Display photo_id end -->
 
     </dl>
