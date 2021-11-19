@@ -1,7 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: %i[show edit update destroy]
 
-  # GET /pictures
   def index
     @q = Picture.ransack(params[:q])
     @pictures = @q.result(distinct: true).includes(:photo_uploader, :likes,
@@ -9,26 +8,21 @@ class PicturesController < ApplicationController
     @location_hash = Gmaps4rails.build_markers(@pictures.where.not(place_latitude: nil)) do |picture, marker|
       marker.lat picture.place_latitude
       marker.lng picture.place_longitude
-      marker.infowindow "<h5><a href='/pictures/#{picture.id}'>#{picture.description}</a></h5><small>#{picture.place_formatted_address}</small>"
     end
   end
 
-  # GET /pictures/1
   def show
     @comment = Comment.new
     @tag = Tag.new
     @like = Like.new
   end
 
-  # GET /pictures/new
   def new
     @picture = Picture.new
   end
 
-  # GET /pictures/1/edit
   def edit; end
 
-  # POST /pictures
   def create
     @picture = Picture.new(picture_params)
 
@@ -44,7 +38,6 @@ class PicturesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pictures/1
   def update
     if @picture.update(picture_params)
       redirect_to @picture, notice: "Picture was successfully updated."
@@ -53,7 +46,6 @@ class PicturesController < ApplicationController
     end
   end
 
-  # DELETE /pictures/1
   def destroy
     @picture.destroy
     message = "Picture was successfully deleted."
@@ -66,12 +58,10 @@ class PicturesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_picture
     @picture = Picture.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def picture_params
     params.require(:picture).permit(:description, :photo, :photo_owner,
                                     :place)
