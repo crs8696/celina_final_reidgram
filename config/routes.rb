@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "followers#index"
   resources :tags
   resources :likes
   resources :comments
