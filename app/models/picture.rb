@@ -1,6 +1,10 @@
 class Picture < ApplicationRecord
   # Direct associations
 
+  has_many   :tags,
+             :foreign_key => "photo_id",
+             :dependent => :destroy
+
   has_many   :likes,
              :foreign_key => "photo_id",
              :dependent => :destroy
