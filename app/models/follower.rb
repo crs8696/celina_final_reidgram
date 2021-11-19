@@ -1,6 +1,9 @@
 class Follower < ApplicationRecord
   # Direct associations
 
+  belongs_to :receiver,
+             :class_name => "User"
+
   belongs_to :follower,
              :class_name => "User"
 
