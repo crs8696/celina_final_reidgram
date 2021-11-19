@@ -7,6 +7,9 @@ class TagResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :photo,
+             resource: PictureResource
+
   belongs_to :user
 
   # Indirect associations
