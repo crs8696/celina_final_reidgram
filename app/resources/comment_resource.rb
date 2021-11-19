@@ -8,6 +8,10 @@ class CommentResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :comment_giver,
+             resource: UserResource,
+             foreign_key: :commenter
+
   # Indirect associations
 
 end
