@@ -8,6 +8,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :followers,
+             foreign_key: :follower_id
+
   has_many   :tags
 
   has_many   :likes
