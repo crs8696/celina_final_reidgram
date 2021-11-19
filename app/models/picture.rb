@@ -19,6 +19,10 @@ class Picture < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :users,
+             :through => :likes,
+             :source => :user
+
   has_many   :viewers,
              :through => :tags,
              :source => :user
