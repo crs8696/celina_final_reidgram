@@ -1,6 +1,10 @@
 class Comment < ApplicationRecord
   # Direct associations
 
+  belongs_to :comment_giver,
+             :class_name => "User",
+             :foreign_key => "commenter"
+
   # Indirect associations
 
   # Validations
