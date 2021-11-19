@@ -6,34 +6,26 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= picture.description %></dd>
-      <!-- Display description end -->
 
       <dt>Photo</dt>
-      <!-- Display photo start -->
       <dd>
         <%= cl_image_tag @picture.photo, class: "img-fluid" %>
       </dd>
-      <!-- Display photo end -->
 
       <dt>Photo owner</dt>
-      <!-- Display photo_owner start -->
       <dd>
         <% if @picture.photo_uploader.present? %>
           <%= link_to picture.photo_uploader, picture.photo_uploader %>
         <% end %>
       </dd>
-      <!-- Display photo_owner end -->
 
       <dt>Place</dt>
-      <!-- Display place start -->
       <dd>
         <div>
           <%= render partial: "pictures/one_photo_map" %>
         </div>
       </dd>
-      <!-- Display place end -->
 
     </dl>
 
@@ -42,21 +34,17 @@
         <%= link_to_show_or_back picture, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link picture start -->
       <div class="col">
         <%= link_to edit_picture_url(picture), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link picture end -->
 
-      <!-- Delete link picture start -->
       <div class="col">
         <%= link_to picture, method: :delete, data: { confirm: "Do you really want to delete this picture?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link picture end -->
     </div>
   </div>
 
