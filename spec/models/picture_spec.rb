@@ -16,6 +16,8 @@ RSpec.describe Picture, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:comment_givers) }
+
     end
 
     describe "Validations" do
