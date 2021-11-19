@@ -27,6 +27,22 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :receivers, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.receivers.map(&:id))
+      end
+    end
+  end
+
+  has_many :follower, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.follower.map(&:id))
+      end
+    end
+  end
+
   many_to_many :photos,
                resource: PictureResource
 
@@ -35,4 +51,16 @@ class UserResource < ApplicationResource
 
   many_to_many :picture
 
+
+  filter :receiver_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:receivers).where(:followers => {:receiver_id => value})
+    end
+  end
+
+  filter :follower_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:follower).where(:followers => {:follower_id => value})
+    end
+  end
 end
