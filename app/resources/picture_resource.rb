@@ -9,6 +9,9 @@ class PictureResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments,
+             foreign_key: :photo_id
+
   has_many   :tags,
              foreign_key: :photo_id
 

@@ -8,6 +8,9 @@ class CommentResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :photo,
+             resource: PictureResource
+
   belongs_to :comment_giver,
              resource: UserResource,
              foreign_key: :commenter
