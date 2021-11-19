@@ -1,0 +1,109 @@
+<% was_validated = picture.errors.any? %>
+
+<%= form_with(model: picture, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = picture.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% picture.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <!-- Label and input for photo start -->
+  <div class="form-group">
+    <% photo_class = "form-control" %>
+    <% photo_was_invalid = picture.errors.include?(:photo) %>
+
+    <% if was_validated %>
+      <% if photo_was_invalid %>
+        <% photo_class << " is-invalid" %>
+      <% else %>
+        <% photo_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :photo %>
+    <!-- Input for photo start -->
+    <%= f.text_field :photo, class: photo_class, placeholder: "Enter photo" %>
+    <!-- Input for photo end -->
+    <% if photo_was_invalid %>
+      <% picture.errors.full_messages_for(:photo).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for photo end -->
+  <!-- Label and input for photo_owner start -->
+  <div class="form-group">
+    <% photo_owner_class = "form-control" %>
+    <% photo_owner_was_invalid = picture.errors.include?(:photo_owner) %>
+
+    <% if was_validated %>
+      <% if photo_owner_was_invalid %>
+        <% photo_owner_class << " is-invalid" %>
+      <% else %>
+        <% photo_owner_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :photo_owner %>
+    <!-- Input for photo_owner start -->
+    <%= f.number_field :photo_owner, class: photo_owner_class, placeholder: "Enter photo owner" %>
+    <!-- Input for photo_owner end -->
+    <% if photo_owner_was_invalid %>
+      <% picture.errors.full_messages_for(:photo_owner).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for photo_owner end -->
+  <!-- Label and input for place start -->
+  <div class="form-group">
+    <% place_class = "form-control" %>
+    <% place_was_invalid = picture.errors.include?(:place) %>
+
+    <% if was_validated %>
+      <% if place_was_invalid %>
+        <% place_class << " is-invalid" %>
+      <% else %>
+        <% place_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :place %>
+    <!-- Input for place start -->
+    <%= f.text_field :place, class: place_class, placeholder: "Enter place" %>
+    <!-- Input for place end -->
+    <% if place_was_invalid %>
+      <% picture.errors.full_messages_for(:place).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for place end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
