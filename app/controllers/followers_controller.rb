@@ -3,7 +3,8 @@ class FollowersController < ApplicationController
 
   # GET /followers
   def index
-    @followers = Follower.page(params[:page]).per(10)
+    @q = Follower.ransack(params[:q])
+    @followers = @q.result(:distinct => true).includes(:follower, :receiver).page(params[:page]).per(10)
   end
 
   # GET /followers/1

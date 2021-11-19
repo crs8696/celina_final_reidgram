@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.page(params[:page]).per(10)
+    @q = User.ransack(params[:q])
+    @users = @q.result(:distinct => true).includes(:comments, :likes, :tags, :followers, :follow_requests, :pictures, :picture, :picture2, :photos, :follower, :receivers).page(params[:page]).per(10)
   end
 
   # GET /users/1

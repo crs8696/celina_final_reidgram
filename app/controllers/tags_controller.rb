@@ -3,7 +3,8 @@ class TagsController < ApplicationController
 
   # GET /tags
   def index
-    @tags = Tag.page(params[:page]).per(10)
+    @q = Tag.ransack(params[:q])
+    @tags = @q.result(:distinct => true).includes(:user, :photo).page(params[:page]).per(10)
   end
 
   # GET /tags/1
