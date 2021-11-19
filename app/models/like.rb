@@ -2,7 +2,7 @@ class Like < ApplicationRecord
   # Direct associations
 
   belongs_to :photo,
-             :class_name => "Picture"
+             class_name: "Picture"
 
   belongs_to :user
 
@@ -15,5 +15,4 @@ class Like < ApplicationRecord
   def to_s
     user.to_s
   end
-
 end

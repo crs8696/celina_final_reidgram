@@ -31,5 +31,4 @@ class PictureResource < ApplicationResource
 
   many_to_many :comment_givers,
                resource: UserResource
-
 end

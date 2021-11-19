@@ -51,16 +51,15 @@ class UserResource < ApplicationResource
 
   many_to_many :picture
 
-
   filter :receiver_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:receivers).where(:followers => {:receiver_id => value})
+      scope.eager_load(:receivers).where(followers: { receiver_id: value })
     end
   end
 
   filter :follower_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:follower).where(:followers => {:follower_id => value})
+      scope.eager_load(:follower).where(followers: { follower_id: value })
     end
   end
 end

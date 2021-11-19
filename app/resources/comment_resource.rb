@@ -16,5 +16,4 @@ class CommentResource < ApplicationResource
              foreign_key: :commenter
 
   # Indirect associations
-
 end

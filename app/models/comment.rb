@@ -2,11 +2,11 @@ class Comment < ApplicationRecord
   # Direct associations
 
   belongs_to :photo,
-             :class_name => "Picture"
+             class_name: "Picture"
 
   belongs_to :comment_giver,
-             :class_name => "User",
-             :foreign_key => "commenter"
+             class_name: "User",
+             foreign_key: "commenter"
 
   # Indirect associations
 
@@ -17,5 +17,4 @@ class Comment < ApplicationRecord
   def to_s
     comment_content
   end
-
 end
