@@ -8,6 +8,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :follow_requests,
+             resource: FollowerResource,
+             foreign_key: :receiver_id
+
   has_many   :followers,
              foreign_key: :follower_id
 

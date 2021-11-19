@@ -7,6 +7,9 @@ class FollowerResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :receiver,
+             resource: UserResource
+
   belongs_to :follower,
              resource: UserResource
 
