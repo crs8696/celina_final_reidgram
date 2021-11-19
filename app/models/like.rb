@@ -1,6 +1,9 @@
 class Like < ApplicationRecord
   # Direct associations
 
+  belongs_to :photo,
+             :class_name => "Picture"
+
   belongs_to :user
 
   # Indirect associations
