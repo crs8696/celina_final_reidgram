@@ -24,7 +24,11 @@
 
       <dt>Place</dt>
       <!-- Display place start -->
-      <dd><%= picture.place %></dd>
+      <dd>
+        <div>
+          <%= render partial: "pictures/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display place end -->
 
     </dl>

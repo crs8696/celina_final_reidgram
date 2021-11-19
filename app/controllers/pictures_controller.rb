@@ -4,6 +4,11 @@ class PicturesController < ApplicationController
   # GET /pictures
   def index
     @pictures = Picture.all
+    @location_hash = Gmaps4rails.build_markers(@pictures.where.not(:place_latitude => nil)) do |picture, marker|
+      marker.lat picture.place_latitude
+      marker.lng picture.place_longitude
+      marker.infowindow "<h5><a href='/pictures/#{picture.id}'>#{picture.description}</a></h5><small>#{picture.place_formatted_address}</small>"
+    end
   end
 
   # GET /pictures/1
